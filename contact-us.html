@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:
+linear-gradient(-45deg,
+#0f172a,
+#1e1b4b,
+#4c1d95,
+#7c3aed,
+#ec4899);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+padding:20px;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.glow1,
+.glow2{
+position:fixed;
+border-radius:50%;
+filter:blur(80px);
+z-index:-1;
+}
+
+.glow1{
+width:250px;
+height:250px;
+background:#ff00ff;
+top:-50px;
+left:-50px;
+opacity:.35;
+}
+
+.glow2{
+width:300px;
+height:300px;
+background:#00ffff;
+bottom:-80px;
+right:-80px;
+opacity:.25;
+}
+
+.header{
+max-width:550px;
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+margin-bottom:30px;
+}
+
+.back-btn{
+position:absolute;
+left:0;
+text-decoration:none;
+padding:12px 18px;
+border-radius:14px;
+font-weight:700;
+color:white;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.15);
+transition:.3s;
+}
+
+.back-btn:hover{
+transform:translateX(-3px);
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(90deg,#FFD700,#FFB300,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.card{
+max-width:550px;
+margin:auto;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:30px;
+padding:28px;
+box-shadow:
+0 8px 32px rgba(0,0,0,.35),
+0 0 30px rgba(255,255,255,.08);
+}
+
+.title{
+text-align:center;
+font-size:34px;
+font-weight:800;
+color:white;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+color:#e2e8f0;
+margin-bottom:25px;
+font-size:15px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+color:#fff;
+font-weight:600;
+}
+
+input,
+textarea{
+width:100%;
+border:none;
+outline:none;
+padding:16px;
+border-radius:16px;
+font-size:16px;
+color:white;
+background:rgba(255,255,255,.10);
+border:1px solid rgba(255,255,255,.10);
+}
+
+input::placeholder,
+textarea::placeholder{
+color:#d1d5db;
+}
+
+textarea{
+height:170px;
+resize:none;
+}
+
+.send-btn{
+width:100%;
+border:none;
+cursor:pointer;
+padding:17px;
+margin-top:10px;
+border-radius:18px;
+font-size:18px;
+font-weight:800;
+color:white;
+background:
+linear-gradient(135deg,
+#ff6b6b,
+#ff0080,
+#7c3aed);
+box-shadow:
+0 10px 25px rgba(255,0,128,.35);
+transition:.3s;
+}
+
+.send-btn:hover{
+transform:translateY(-2px);
+}
+
+#status{
+margin-top:18px;
+text-align:center;
+font-weight:700;
+color:#fff;
+}
+
+.footer-note{
+text-align:center;
+margin-top:20px;
+font-size:13px;
+color:#cbd5e1;
+}
+
+@media(max-width:480px){
+
+.logo{
+font-size:22px;
+}
+
+.title{
+font-size:28px;
+}
+
+.back-btn{
+padding:10px 14px;
+font-size:14px;
+}
+
+.card{
+padding:22px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="glow1"></div>
+<div class="glow2"></div>
+
+<div class="header">
+
+<a href="index.html" class="back-btn">
+⬅ Back
+</a>
+
+<div class="logo">
+STREAMEX HUB
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+📩 Contact Us
+</div>
+
+<div class="subtitle">
+Send your feedback, issue or suggestion directly.
+</div>
+
+<form id="contactForm">
+
+<div class="input-group">
+<label>Your Name</label>
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+required>
+</div>
+
+<div class="input-group">
+<label>Your Message</label>
+<textarea
+id="message"
+placeholder="Write your message here..."
+required></textarea>
+</div>
+
+<button type="submit" class="send-btn">
+🚀 Continue
+</button>
+
+<div id="status"></div>
+
+</form>
+
+<div class="footer-note">
+Luxury Support Portal © 2026
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("-hZyL3fyP6LUMWiIj");
+
+document
+.getElementById("contactForm")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const status =
+document.getElementById("status");
+
+status.innerHTML = "⏳ Sending Message...";
+
+emailjs.send(
+"service_k9v8o4b",
+"template_ay4pz8q",
+{
+from_name:
+document.getElementById("name").value,
+
+message:
+document.getElementById("message").value,
+
+to_email:
+"adityasinghzrx@gmail.com"
+}
+)
+
+.then(function(){
+
+status.innerHTML =
+"✅ Message Sent Successfully";
+
+document
+.getElementById("contactForm")
+.reset();
+
+})
+
+.catch(function(error){
+
+status.innerHTML =
+"❌ Failed To Send Message";
+
+console.log(error);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
